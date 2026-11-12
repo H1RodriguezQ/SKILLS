@@ -34,6 +34,7 @@ skills/
 │   └── aplicar-skills/        ← instalar skills en otros proyectos
 ├── .agents/skills/            ← mismas skills, formato universal (Cursor, Codex…)
 ├── plantillas/                ← plantillas para fichas y skills
+├── sincronizar-skills.ps1/.sh ← copia las skills a la carpeta global
 └── skills-lock.json           ← versiones de skills instaladas con `npx skills`
 ```
 
@@ -46,6 +47,11 @@ cd Claude
 claude
 ```
 
-Para tener las skills disponibles en **todos** tus proyectos, cópialas a tu carpeta global
-(`~/.claude/skills/` en Mac/Linux, `%USERPROFILE%\.claude\skills\` en Windows).
-La skill `aplicar-skills` explica cómo.
+Para tener las skills disponibles en **todos** tus proyectos, ejecuta el script de sincronización.
+Ejecútalo de nuevo cada vez que cambies o crees una skill (después de `git pull` también):
+
+- Windows: `powershell -ExecutionPolicy Bypass -File sincronizar-skills.ps1`
+- Mac/Linux: `bash sincronizar-skills.sh`
+
+Copia `.claude/skills/` a `.agents/skills/` y a la carpeta global (`~/.claude/skills/`).
+Solo reemplaza las skills de este repo; no toca otras skills que tengas instaladas.
