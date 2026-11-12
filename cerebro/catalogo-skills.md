@@ -22,5 +22,6 @@ Instálalas con `npx skills add <paquete>` (revisa siempre antes de instalar).
 | Proceso de desarrollo (planes, TDD, debugging) | superpowers | `obra/superpowers` |
 
 ## Ya disponibles en Claude (plugins instalados en la cuenta)
+Inventario completo en [skills-instaladas.md](skills-instaladas.md).
 superpowers, agentic-sdlc, vercel, figma, Notion, remotion, anthropic-skills (docx, pdf,
 pptx, xlsx, skill-creator), small-business, sales, marketing, data, design, engineering.

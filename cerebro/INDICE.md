@@ -5,6 +5,7 @@ Mapa de toda la memoria. Mantenlo al día cada vez que agregues un archivo.
 ## Núcleo
 - [perfil.md](perfil.md): quién es Henry, preferencias y forma de trabajar
 - [catalogo-skills.md](catalogo-skills.md): qué skill usar para cada tarea
+- [skills-instaladas.md](skills-instaladas.md): inventario completo de las skills de tu cuenta Claude
 
 ## Proyectos
 Una ficha por proyecto en [proyectos/](proyectos/).
