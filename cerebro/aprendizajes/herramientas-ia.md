@@ -23,3 +23,26 @@ Publicaciones que Henry guardó. Revisadas el 2026-11-13.
 - Qué es: video que genera una web interactiva con animaciones que siguen el mouse,
   con un solo prompt usando el MCP de Buzzy (@buzzy_agent) + Claude Code. Hashtags: #seedance25 (video IA).
 - 2026-11-13 `npx skills find buzzy` y GitHub no muestran ninguna skill ni MCP oficial de Buzzy → no instalar; si se quiere, conseguir el MCP desde la web oficial de Buzzy (requiere cuenta). Es publicidad pagada.
+
+## Lote 2 (2026-11-13): ideas para sitios web y Claude Code
+Henry quiere aplicarlas en sus sitios, **siempre gratis**.
+
+### Para sitios web
+- **Web 3D con scroll** (Brandon the Web Dev, "Websites after Claude Fable 5.2") — https://www.facebook.com/share/r/1DXuiJcCWt/
+  Imagen o video que avanza al hacer scroll (rascacielos de noche, título gigante). Gratis: secuencia de imágenes en `<canvas>` + GSAP ScrollTrigger. Su "marco" se pide comentando HOW.
+- **Web de constructora** (Ascenta) — https://www.facebook.com/share/r/1E4pqSGRfx/
+  Hero a pantalla completa con foto o video de la obra y menú minimalista. Gratis: video de Pexels o foto propia + animaciones al hacer scroll.
+- **Mejorar el diseño que hace Claude** (Migue.baena) — https://www.facebook.com/share/r/1E56qKYSar/
+  4 herramientas (no se leyó la lista completa); una extrae el sistema de diseño de una web (colores, tipografía, animaciones) a `DESIGN.md` + una `.skill`. Ya tenemos parecido: `design-system`, `brand`, `design-taste-frontend`, `ui-ux-pro-max`.
+- **Astryx, sistema de diseño de Meta** (naiker.codes) — https://www.facebook.com/share/p/19k5dAWY4Y/
+  Verificado: https://github.com/meta/astryx (~27k estrellas). Gratis y open source: 150+ componentes React accesibles, 7 temas, modo oscuro, compatible con Tailwind, CLI pensada para agentes de IA.
+- **10 estilos para que las imágenes/videos no parezcan IA** (Viral District) — https://www.facebook.com/share/p/19geUhXRGe/
+  Escribir el nombre en inglés en el prompt: Woodblock Print, Pixel Art, Noir Comic, 1930s Cartoon, Brick Toy, Clay Diorama, CRT Vector, Knitted Puppet, PS2 Style, Sumi Ink. Útil para ilustraciones de los sitios.
+- **Prueba de carga con Grafana k6** (Adriano) — https://www.facebook.com/share/r/19u6ymfRpj/
+  Gratis y open source: simula muchos usuarios a la vez para ver si la web aguanta (p. ej. 1.000 reservas en Tauros) antes de lanzarla.
+
+### Para Claude Code (no son de webs)
+- **5 herramientas para Claude Code** (Manu Lizama) — https://www.facebook.com/share/r/18jiCfMcvs/
+  1) Omni (descripción no legible) 2) Claude Mem, memoria entre sesiones (https://github.com/thedotmack/claude-mem) 3) Headroom, menos tokens 4) Claude Code Setup, plugin oficial que recomienda hooks, skills y MCP 5) Task Observer, aprende cómo trabajas y mejora tus skills. → revisar antes de instalar; Claude Mem se solapa con nuestro `cerebro`.
+- **7 agentes de Claude en 10 min** (Juanbertorello.ia) — https://www.facebook.com/share/r/19rq87Soar/ → el prompt se pide comentando PROMPT.
+- **Claude conectado a Meta Ads** (Felipe Vergara) — https://www.facebook.com/share/v/18ds2JFg8h/ → relacionado con las skills `claude-ads`.
