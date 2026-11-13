@@ -6,6 +6,7 @@ description: Crea, mejora y adapta la hoja de vida (CV) de Henry y lo ayuda a po
 # Hoja de vida y postulaciones
 
 Herramienta: **RenderCV** (YAML → PDF). Si no está instalada: `pip install "rendercv[full]"`.
+Ejecútala SIEMPRE como `python -m rendercv ...` (en el PC de Henry el comando `rendercv` solo no está en el PATH).
 
 ## Dónde vive todo
 `CEREBRO` = `~/Desktop/Claude/` (Windows: `%USERPROFILE%\Desktop\Claude\`).
@@ -35,7 +36,7 @@ Adaptar = elegir, reordenar y redactar mejor lo que es verdad.
 Cuando Henry termina un proyecto, consigue un trabajo, un curso o un logro:
 1. Agrégalo a `cv-maestro.yaml` en la sección correcta.
 2. Si es un repo de GitHub, lee su README para sacar tecnologías y funciones reales.
-3. Genera el PDF: `rendercv render cv-maestro.yaml` y revisa que no haya errores.
+3. Genera el PDF: `python -m rendercv render cv-maestro.yaml` y revisa que no haya errores.
 
 ## Modo 2: Mejorar la hoja de vida
 Revisa el CV con esta lista y propone cambios concretos (antes → después):
@@ -67,7 +68,7 @@ Para cada oferta elegida:
    - ajusta `headline` y el perfil al cargo,
    - pon primero los proyectos y habilidades más relevantes; quita lo que no aporta,
    - usa las mismas palabras de la oferta **solo** donde describan algo real.
-   Genera el PDF con `rendercv render cv.yaml`.
+   Genera el PDF con `python -m rendercv render cv.yaml`.
 4. **Carta de presentación** (`carta.md`): 3 párrafos, máximo 250 palabras, nombrando la empresa
    y 2-3 proyectos concretos que encajan con la oferta.
 5. **Enviar la postulación:**

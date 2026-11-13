@@ -15,3 +15,4 @@ Tres proyectos open source que Henry guardó el 2026-11-13. Todos gratis.
 
 ## Skill creada
 - 2026-11-13 Se creó la skill `hoja-de-vida` (RenderCV). Datos reales en `privado/hoja-de-vida/` (no se sube a GitHub).
+- 2026-11-13 RenderCV 2.8 instalado en HENRY-PC (Python 3.14). Usar `python -m rendercv`, no `rendercv` solo → el comando suelto no está en el PATH.

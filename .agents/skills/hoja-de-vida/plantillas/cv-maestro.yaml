@@ -1,7 +1,7 @@
 # Hoja de vida MAESTRA de Henry (formato RenderCV).
 # Aquí va TODO: cada proyecto, logro y habilidad real. Las versiones para cada oferta
 # se sacan de este archivo, recortando y reordenando; nunca inventando.
-# Generar PDF:  rendercv render cv-maestro.yaml
+# Generar PDF:  python -m rendercv render cv-maestro.yaml
 # Los datos marcados con (COMPLETAR) los llena Henry; Claude no los inventa.
 cv:
   name: Henry Rodríguez Quintero
