@@ -31,8 +31,10 @@ skills/
 │   ├── find-skills/           ← buscar e instalar skills (vercel-labs)
 │   ├── cerebro/               ← leer y escribir en la memoria
 │   ├── crear-skill/           ← crear skills nuevas
-│   └── aplicar-skills/        ← instalar skills en otros proyectos
+│   ├── aplicar-skills/        ← instalar skills en otros proyectos
+│   └── hoja-de-vida/          ← CV y postulaciones
 ├── .agents/skills/            ← mismas skills, formato universal (Cursor, Codex…)
+├── privado/                   ← datos personales (CV, postulaciones); NO se sube
 ├── plantillas/                ← plantillas para fichas y skills
 ├── sincronizar-skills.ps1/.sh ← copia las skills a la carpeta global
 └── skills-lock.json           ← versiones de skills instaladas con `npx skills`

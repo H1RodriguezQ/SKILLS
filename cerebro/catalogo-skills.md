@@ -9,6 +9,7 @@ Qué skill usar para cada tipo de tarea. Si no está aquí, usa `find-skills`.
 | `crear-skill` | Convertir una tarea repetida en una skill nueva |
 | `aplicar-skills` | Instalar en un proyecto solo las skills que le sirven |
 | `find-skills` | Buscar e instalar skills del ecosistema (skills.sh) |
+| `hoja-de-vida` | Crear, mejorar y adaptar el CV (RenderCV), buscar ofertas y preparar postulaciones |
 
 ## Skills recomendadas por tipo de proyecto
 Instálalas con `npx skills add <paquete>` (revisa siempre antes de instalar).

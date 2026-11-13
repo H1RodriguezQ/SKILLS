@@ -13,5 +13,5 @@ Tres proyectos open source que Henry guardó el 2026-11-13. Todos gratis.
 - **Postular a ofertas:** Resume Matcher (adapta el CV a cada oferta).
 - **Si prefieres editar con el mouse:** Reactive Resume en rxresu.me.
 
-## Pendiente
-- Decidir si se crea una skill `hoja-de-vida` basada en RenderCV.
+## Skill creada
+- 2026-11-13 Se creó la skill `hoja-de-vida` (RenderCV). Datos reales en `privado/hoja-de-vida/` (no se sube a GitHub).

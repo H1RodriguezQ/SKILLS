@@ -1,0 +1,85 @@
+# Hoja de vida MAESTRA de Henry (formato RenderCV).
+# Aquí va TODO: cada proyecto, logro y habilidad real. Las versiones para cada oferta
+# se sacan de este archivo, recortando y reordenando; nunca inventando.
+# Generar PDF:  rendercv render cv-maestro.yaml
+# Los datos marcados con (COMPLETAR) los llena Henry; Claude no los inventa.
+cv:
+  name: Henry Rodríguez Quintero
+  headline: Ingeniero de Software · Desarrollo web y móvil · Ciencia de datos
+  location: Bucaramanga, Santander, Colombia
+  email: (COMPLETAR)
+  phone: (COMPLETAR, formato +57 300 123 4567)
+  social_networks:
+    - network: GitHub
+      username: H1RodriguezQ
+    # - network: LinkedIn
+    #   username: (COMPLETAR)
+  sections:
+    perfil:
+      - Ingeniero de Software de la Universidad de Santander (UDES) que construye y publica aplicaciones completas, desde apps móviles con Flutter y Firebase hasta plataformas de análisis de datos con aprendizaje automático. Todos los proyectos están desplegados y documentados en GitHub.
+    educación:
+      - institution: Universidad de Santander (UDES)
+        area: Ingeniería de Software (pregrado)
+        start_date: (COMPLETAR, AAAA-MM)
+        end_date: (COMPLETAR, AAAA-MM o present)
+        location: Bucaramanga, Colombia
+        highlights:
+          - "Proyecto de grado: Apolo UDES, control de acceso con código QR para las ceremonias de grado"
+    proyectos:
+      - name: "[Apolo UDES](https://apolo-udes.web.app)"
+        summary: Proyecto de grado. Sistema de control de acceso con código QR para las ceremonias de grado de la UDES.
+        highlights:
+          - App Android y web en Flutter con Firebase (Firestore, Authentication, Hosting)
+          - Envío automático de correos con Google Apps Script
+          - Publicada en apolo-udes.web.app
+      - name: "[Tauros Barbería](https://tauros-barberia-app.vercel.app)"
+        summary: Aplicación web de agendamiento de citas para una barbería.
+        highlights:
+          - Reservas en línea con la disponibilidad de cada barbero en tiempo real
+          - Panel de administración de barberos, horarios, servicios y agenda del día
+          - Desplegada en Vercel
+      - name: "[Plataforma de Riesgo Sísmico de Santander](https://github.com/H1RodriguezQ/sismos-santander)"
+        summary: Clasificación del riesgo sísmico municipal con datos oficiales del SGC, DANE y UNGRD.
+        highlights:
+          - Modelos de clasificación con scikit-learn y XGBoost
+          - Priorización de municipios con aprendizaje por refuerzo (Gymnasium)
+          - Dashboard interactivo con Streamlit y mapas con Folium
+      - name: "[El Ahorcado · Capitales de Colombia](https://ahorcadocapitales.vercel.app)"
+        summary: Juego web educativo con las 32 capitales de Colombia, por regiones y niveles.
+        highlights:
+          - Modo progresivo, tema oscuro y publicación en Vercel
+      - name: "[CAPS Store](https://github.com/H1RodriguezQ/TiendasGorras)"
+        summary: Tienda en línea de gorras con HTML5, CSS3, JavaScript (ES6+) y Bootstrap 5.
+        highlights:
+          - Carrito persistente, favoritos, filtros, búsqueda, ficha de producto y checkout simulado
+      - name: "[CRUD de Estudiantes](https://github.com/H1RodriguezQ/crud-estudiantes)"
+        summary: Aplicación web para registrar, consultar, editar y eliminar estudiantes, con validación y localStorage.
+      - name: "[Método de Newton-Raphson](https://github.com/H1RodriguezQ/newton-raphson)"
+        summary: Implementación en Python del método numérico de Newton-Raphson, con verificación gráfica en GeoGebra.
+    experiencia:
+      # (COMPLETAR) trabajos, prácticas, monitorías o freelance. Ejemplo:
+      # - company: Nombre de la empresa
+      #   position: Cargo
+      #   start_date: 2025-01
+      #   end_date: present
+      #   location: Bucaramanga
+      #   highlights:
+      #     - Qué hiciste, con qué herramienta y qué resultado (cifra si la hay)
+      - company: (COMPLETAR)
+        position: (COMPLETAR)
+        date: (COMPLETAR)
+    habilidades:
+      - label: Lenguajes
+        details: Python, JavaScript (ES6+), Dart, HTML5, CSS3
+      - label: Frameworks
+        details: Flutter, Bootstrap 5, Streamlit
+      - label: Datos e IA
+        details: scikit-learn, XGBoost, Gymnasium (aprendizaje por refuerzo), Folium
+      - label: Nube y despliegue
+        details: Firebase (Firestore, Auth, Hosting), Vercel, Google Apps Script, Git y GitHub
+      - label: Idiomas
+        details: Español (nativo), Inglés (COMPLETAR nivel)
+design:
+  theme: classic
+locale:
+  language: spanish
