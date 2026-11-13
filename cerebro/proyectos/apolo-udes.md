@@ -34,3 +34,8 @@ cada invitado recibe un QR de un solo uso, y los operadores lo escanean en la en
 - 2026-11-13 Figma: archivo "Apolo UDES — Rediseño" https://www.figma.com/design/S7gTY7mlljtqW3vfcpJFTB con 4 pantallas web como capas editables (registro de invitados, invitación pendiente, invitación a directivo, mi código QR), con datos de ejemplo (no reales). Quedaron a 1280 px de ancho (vista de computador). Faltan las pantallas de la app Flutter (tablet) y la versión de celular (390 px).
   - Cómo se hizo: `cerebro/aprendizajes/scripts/apolo-capturar-pantallas.js` abre cada página en Chromium con Firebase simulado y la guarda como HTML estático → `html_to_figma`. Uso: `node apolo-capturar-pantallas.js <ruta>/apolo_udes/web <carpeta-salida>`.
   - Figma de Henry: plan Starter con asiento View → máx. 20 lecturas MCP al mes; crear archivos e importar no cuenta. Gastar lecturas solo para verificar.
+- 2026-11-13 IDEA APROBADA (por hacer en el chat de Apolo): animaciones en las invitaciones. Primero una página de prueba con interruptores; tocar el código real solo después de que Henry elija.
+  - SÍ: (1) brillo dorado que pasa una vez por "Lo esperamos" y el birrete al abrir; (2) al tocar "Sí, asistiré": confeti dorado/azul corto (≤1,5 s) y el QR aparece con un fundido suave.
+  - DESPUÉS: GIF de sello/sobre en el correo (Higgsfield, gasta créditos).
+  - NO: animar o retrasar el QR en mi-qr.html (se usa en la fila de entrada); animaciones en bucle; música o video.
+  - Siempre respetar `prefers-reduced-motion`; sin librerías pesadas (CSS + un poco de JS); que funcione en celulares de gama baja.
