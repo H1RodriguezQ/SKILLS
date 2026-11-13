@@ -26,3 +26,4 @@ cada invitado recibe un QR de un solo uso, y los operadores lo escanean en la en
 - 2026-11-13 Copia local: `Desktop/Apolo_Udes` (clonada de GitHub). El código se ha trabajado sobre todo desde la app de Claude (chat); GitHub es la fuente de verdad.
 - 2026-11-13 Los borrados de directivos SÍ muestran errores (los maneja `directivos_screen.dart`); el `catch (_) {}` del provider es redundante, no un bug.
 - 2026-11-13 Estado verificado: `flutter analyze` sin avisos y 46 pruebas pasaban (antes de agregar las de uso único) (Flutter 3.41.4).
+- 2026-11-13 Bug arreglado: pantalla Acceso en blanco y app lenta en pantallas ≥700 px. Causa: LayoutBuilder (barra de ocupación) dentro de IntrinsicHeight en ceremonia_screen.dart → nunca usar LayoutBuilder dentro de IntrinsicHeight; usar FractionallySizedBox/Align. Ojo: flutter analyze y las pruebas NO lo detectaban, solo se ve ejecutando la app.
