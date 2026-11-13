@@ -20,9 +20,9 @@ cada invitado recibe un QR de un solo uso, y los operadores lo escanean en la en
   - `applicationId` y `namespace` siguen en `com.example.apolo_udes` → cambiar a algo como `co.edu.udes.apolo` antes de distribuir el APK. Ojo: el paquete está registrado en Firebase (`google-services.json`); al cambiarlo hay que registrar la app Android nueva en la consola de Firebase y descargar el nuevo `google-services.json`.
   - `lib/providers/app_provider.dart` tiene 1.305 líneas y llama a Firestore directo aunque existe `firestore_service.dart` → separar por módulo (graduandos, invitados, directivos, control de acceso).
   - Conviven SQLite (`sqflite`) y Firestore → confirmar si SQLite aún hace falta; si no, quitarlo.
-  - CI hecho en la rama `mejoras-calidad` (`.github/workflows/ci.yml`, Flutter 3.41.4) → falta push + PR.
-  - Pocas pruebas de la lógica central (validación de QR en `app_provider`) → agregar pruebas unitarias.
+  - 2026-11-13 HECHO: CI en `main` (`.github/workflows/ci.yml`, Flutter 3.41.4); primera ejecución en verde.
+  - 2026-11-13 HECHO: regla de uso único del QR extraída a `calcularCodigosUsados()` (app_provider.dart) con 5 pruebas en `test/codigos_usados_test.dart`; ahora 51 pruebas.
   - Dependencias con versiones mayores nuevas (go_router 13, mobile_scanner 5, fl_chart 0.68) → actualizar con cuidado, una por una.
 - 2026-11-13 Copia local: `Desktop/Apolo_Udes` (clonada de GitHub). El código se ha trabajado sobre todo desde la app de Claude (chat); GitHub es la fuente de verdad.
 - 2026-11-13 Los borrados de directivos SÍ muestran errores (los maneja `directivos_screen.dart`); el `catch (_) {}` del provider es redundante, no un bug.
-- 2026-11-13 Estado verificado: `flutter analyze` sin avisos y 46 pruebas pasan (Flutter 3.41.4).
+- 2026-11-13 Estado verificado: `flutter analyze` sin avisos y 46 pruebas pasaban (antes de agregar las de uso único) (Flutter 3.41.4).
