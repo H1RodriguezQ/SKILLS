@@ -25,3 +25,4 @@ Una ficha por proyecto en [proyectos/](proyectos/).
 Lecciones y errores resueltos en [aprendizajes/](aprendizajes/).
 
 - [herramientas-gratis.md](aprendizajes/herramientas-gratis.md): recursos gratis (voces, etc.)
+- [herramientas-cv.md](aprendizajes/herramientas-cv.md): RenderCV, Resume Matcher y Reactive Resume (hojas de vida)
