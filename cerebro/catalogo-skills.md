@@ -24,5 +24,7 @@ Instálalas con `npx skills add <paquete>` (revisa siempre antes de instalar).
 
 ## Ya disponibles en Claude (plugins instalados en la cuenta)
 Inventario completo en [skills-instaladas.md](skills-instaladas.md).
+
+**Conectores:** Higgsfield (imágenes, video, voz, anuncios; gasta créditos) → [aprendizajes/higgsfield.md](aprendizajes/higgsfield.md).
 superpowers, agentic-sdlc, vercel, figma, Notion, remotion, anthropic-skills (docx, pdf,
 pptx, xlsx, skill-creator), small-business, sales, marketing, data, design, engineering.

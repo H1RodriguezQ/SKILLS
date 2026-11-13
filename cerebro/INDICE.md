@@ -27,3 +27,4 @@ Lecciones y errores resueltos en [aprendizajes/](aprendizajes/).
 - [herramientas-gratis.md](aprendizajes/herramientas-gratis.md): recursos gratis (voces, etc.)
 - [herramientas-cv.md](aprendizajes/herramientas-cv.md): RenderCV, Resume Matcher y Reactive Resume (hojas de vida)
 - [herramientas-ia.md](aprendizajes/herramientas-ia.md): herramientas de IA vistas en Facebook (7 sistemas, 500 agentes, Buzzy) + ideas gratis para sitios web (scroll 3D, Astryx, k6, estilos de imagen)
+- [higgsfield.md](aprendizajes/higgsfield.md): Higgsfield conectado (imágenes, video, voces, anuncios)
