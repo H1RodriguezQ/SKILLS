@@ -16,6 +16,7 @@ Publicaciones que Henry guardó. Revisadas el 2026-11-13.
 - Qué es: colección de 500+ casos de uso de agentes de IA por industria (salud, finanzas,
   educación, retail…) con enlaces a implementaciones open source y un curso de CrewAI + MCP.
 - 2026-11-13 Sí está en GitHub (actualizado 2026-11). NO trae skills (ningún SKILL.md): la carpeta `agents/` tiene 21 agentes de ejemplo (investigación web, revisión de código, preguntas sobre PDF, SQL, correos, CV, ofertas de trabajo, redes sociales…) → sirve de inspiración para crear skills con `crear-skill`, no para instalar.
+- 2026-11-13 Clonado en `Desktop/500-AI-Agents-Projects`, sin instalar. Los agentes usan la API de OpenAI (de pago) → Henry eligió no usarlos; pedirle a Claude el informe directamente.
 
 ## Buzzy + Claude Code (webs interactivas premium)
 - Fuente: Facebook, Web by Varis (colaboración pagada con Buzzy Now) — https://www.facebook.com/share/v/1FBCNzHCax/
