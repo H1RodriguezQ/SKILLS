@@ -19,6 +19,7 @@ Una ficha por proyecto en [proyectos/](proyectos/).
 | Ahorcado Capitales | H1RodriguezQ/Ahorcado-capitales | [ahorcado-capitales.md](proyectos/ahorcado-capitales.md) |
 | Tiendas Gorras | H1RodriguezQ/TiendasGorras | [tiendas-gorras.md](proyectos/tiendas-gorras.md) |
 | CRUD Estudiantes | H1RodriguezQ/crud-estudiantes | [crud-estudiantes.md](proyectos/crud-estudiantes.md) |
+| Portafolio | H1RodriguezQ/portafolio (por crear) | [portafolio.md](proyectos/portafolio.md) |
 | SabiasQue | (local en HENRY-PC) | [sabiasque.md](proyectos/sabiasque.md) |
 
 ## Aprendizajes
