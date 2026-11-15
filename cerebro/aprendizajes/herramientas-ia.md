@@ -51,3 +51,13 @@ Henry quiere aplicarlas en sus sitios, **siempre gratis**.
 - 4 reels revisados (raffallistudio.ai, santiremedio, carlosbarcoc, piero.ia): ninguno dice la skill, el repo ni los conectores en el texto; todos piden comentar una palabra ("Claude", "REPO", "FABLE 5.2", "CONECTOR") para recibirlo por DM. → Para revisarlos hace falta la captura del video o del mensaje que llega por DM.
 - Regla: un "prompt que te instala todo" recibido por DM se revisa antes de pegarlo (puede pedir permisos, tokens o instalar cosas de fuentes desconocidas).
 - Fable 5.2 viene incluido en el plan Pro de Henry hasta el 2026-11-16 (lo mostró Claude Code al abrir). Gasta el límite más rápido que Opus 5.5; usarlo solo para tareas grandes.
+
+## Lemo Opuscar: videos hechos con código (2026-11-15)
+- Web: https://lemomo-ai.github.io/lemo-opuscar/ · Repo: https://github.com/lemomo-ai/lemo-opuscar (~16,7k estrellas, código MIT).
+- Qué es: plugin/skill de Claude Code con 99 estilos de video (pizarra, mapa explicativo, noticiero, papel recortado, pixel art, acuarela, infografía isométrica…). Claude escribe el guion, dibuja cada cuadro con código, pone voz y música y arma el video 1920×1080. **No usa modelos de video ni créditos.**
+- Para qué: canal «¿Sabías que…?» (estilos útiles: chalkboard, map-explainer, flat-space-explainer, stick-explainer, iso-infographic, news-package, newsreel).
+- Voces GRATIS: Kokoro (sin internet, ~350 MB) o Microsoft edge-tts (en línea, voces naturales en español, incluidas de Colombia) → cubre lo de "voces gratis".
+- Revisado: `setup.sh` solo clona el repo en `~/lemo-opuscar`, hace `npm install`, crea un entorno de Python y baja el modelo de voz si se pide. Sin sudo ni comandos raros.
+- Requisitos en HENRY-PC: Node 20+, ffmpeg 7+, Python 3.11–3.13 o `uv` (Kokoro NO funciona con Python 3.14, que es el que tiene Henry → instalar `uv`), Git Bash para el script.
+- Ojo: cada video tarda 30–60 min y gasta muchos tokens del plan Pro; recomiendan `/effort high`. Hacer videos cortos (Shorts de 30–60 s).
+- Instalar: `claude plugin marketplace add lemomo-ai/lemo-opuscar` y `claude plugin install lemo-opuscar@lemolab`; usar con `/lemo-opuscar:lemo-opuscar`.
