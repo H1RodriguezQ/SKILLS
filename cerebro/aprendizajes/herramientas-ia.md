@@ -46,3 +46,8 @@ Henry quiere aplicarlas en sus sitios, **siempre gratis**.
   1) Omni (descripción no legible) 2) Claude Mem, memoria entre sesiones (https://github.com/thedotmack/claude-mem) 3) Headroom, menos tokens 4) Claude Code Setup, plugin oficial que recomienda hooks, skills y MCP 5) Task Observer, aprende cómo trabajas y mejora tus skills. → revisar antes de instalar; Claude Mem se solapa con nuestro `cerebro`.
 - **7 agentes de Claude en 10 min** (Juanbertorello.ia) — https://www.facebook.com/share/r/19rq87Soar/ → el prompt se pide comentando PROMPT.
 - **Claude conectado a Meta Ads** (Felipe Vergara) — https://www.facebook.com/share/v/18ds2JFg8h/ → relacionado con las skills `claude-ads`.
+
+## Reels de Instagram (2026-11-15)
+- 4 reels revisados (raffallistudio.ai, santiremedio, carlosbarcoc, piero.ia): ninguno dice la skill, el repo ni los conectores en el texto; todos piden comentar una palabra ("Claude", "REPO", "FABLE 5.2", "CONECTOR") para recibirlo por DM. → Para revisarlos hace falta la captura del video o del mensaje que llega por DM.
+- Regla: un "prompt que te instala todo" recibido por DM se revisa antes de pegarlo (puede pedir permisos, tokens o instalar cosas de fuentes desconocidas).
+- Fable 5.2 viene incluido en el plan Pro de Henry hasta el 2026-11-16 (lo mostró Claude Code al abrir). Gasta el límite más rápido que Opus 5.5; usarlo solo para tareas grandes.
