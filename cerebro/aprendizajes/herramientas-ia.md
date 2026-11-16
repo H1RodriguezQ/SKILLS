@@ -61,3 +61,8 @@ Henry quiere aplicarlas en sus sitios, **siempre gratis**.
 - Requisitos en HENRY-PC: Node 20+, ffmpeg 7+, Python 3.11–3.13 o `uv` (Kokoro NO funciona con Python 3.14, que es el que tiene Henry → instalar `uv`), Git Bash para el script.
 - Ojo: cada video tarda 30–60 min y gasta muchos tokens del plan Pro; recomiendan `/effort high`. Hacer videos cortos (Shorts de 30–60 s).
 - Instalar: `claude plugin marketplace add lemomo-ai/lemo-opuscar` y `claude plugin install lemo-opuscar@lemolab`; usar con `/lemo-opuscar:lemo-opuscar`.
+
+## Open-Higgsfield (2026-11-16)
+- Repo: https://github.com/TechBeme/open-higgsfield (MIT, Next.js, activo). Vista previa: https://openhiggs.techbe.me (solo interfaz, no genera).
+- Qué es: una INTERFAZ propia (tipo Higgsfield) para generar imágenes y videos, pero NO trae IA: hay que conectar claves de API de proveedores (Magnific, Google AI Studio, Vertex AI, Vercel AI Gateway, ToAPIs, Runware), y casi todos cobran por imagen o video.
+- Decisión: NO instalar por ahora → va contra la preferencia de Henry (sin APIs de pago) y ya tiene Higgsfield (créditos) + Lemo Opuscar (videos gratis con código). Solo valdría con la clave gratis de Google AI Studio (Gemini), que da pocas imágenes al día.
