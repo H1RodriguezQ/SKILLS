@@ -44,3 +44,5 @@ node --test app/orders.server.test.ts    # pruebas de la lógica de pedidos
 - 2026-11-17 Pruebas contra la tienda real: script con `shopify app env show` → process.env (sin imprimir el secreto) + SHOPIFY_APP_URL del túnel + vite ssrLoadModule + unauthenticated.admin.
 - 2026-11-17 En Windows, `prisma generate` falla con EPERM si `shopify app dev` está corriendo: parar el servidor primero.
 - 2026-11-17 Edge headless no baja de ~500 px de ancho: para ver en celular, meter la página en un iframe de 390 px.
+- 2026-11-17 Detector de contraentrega (app/cod.server.ts): reglas + pregunta "¿Es contraentrega?" + aprende por tienda tras 3 respuestas iguales (tabla ShopSetting). Henry pidió "un modelo"; se eligió reglas+aprendizaje porque no hay datos para entrenar IA.
+- 2026-11-17 Tiendas de desarrollo: Shopify limita orderCreate a pocos pedidos por minuto ("Too many attempts"); esperar ~65 s entre pedidos en pruebas.
