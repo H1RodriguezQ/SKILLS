@@ -15,7 +15,9 @@ Agentes por WhatsApp oficial para tiendas en Colombia: verifica pedidos contraen
 ## Parte 1
 1. [x] Webhook orders/create → guarda el pedido (tabla Order)
 2. [x] HMAC: lo verifica `authenticate.webhook` de la librería de Shopify (401 si la firma falla)
-3. [ ] Envío de la plantilla de verificación por WhatsApp Cloud API (claves en .env)
+3. [x] Mensaje de verificación + simulador de respuestas + etiqueta en Shopify (falta conectar WhatsApp real)
+4. [x] orders/cancelled y webhooks de privacidad (compliance)
+5. [ ] WhatsApp Cloud API (necesita Meta; Henry decide cuándo)
 
 ## Cómo correrlo
 ```bash
@@ -38,3 +40,7 @@ node --test app/orders.server.test.ts    # pruebas de la lógica de pedidos
 - 2026-11-17 "Flete prepago" = solo el envío pagado antes (caso riesgoso). Pedidos pagados en línea se muestran como "Pago en línea", no "prepago", para no confundir.
 - 2026-11-17 Plantilla WhatsApp de verificación: usar el texto del manual (pág. 9) tal cual, con [tienda], [número], [dirección], [nombre].
 - 2026-11-17 Panel dentro de Shopify = Polaris (requisito de Shopify). La marca completa (colores, fuentes) va en el panel propio (Cloudflare Pages, sirve también para WooCommerce), ícono, landing y WhatsApp.
+- 2026-11-17 Auditoría completa en C:\proyectos\klipsale\AUDITORIA.md (qué se probó contra la tienda, qué se corrigió, pendientes).
+- 2026-11-17 Pruebas contra la tienda real: script con `shopify app env show` → process.env (sin imprimir el secreto) + SHOPIFY_APP_URL del túnel + vite ssrLoadModule + unauthenticated.admin.
+- 2026-11-17 En Windows, `prisma generate` falla con EPERM si `shopify app dev` está corriendo: parar el servidor primero.
+- 2026-11-17 Edge headless no baja de ~500 px de ancho: para ver en celular, meter la página en un iframe de 390 px.
