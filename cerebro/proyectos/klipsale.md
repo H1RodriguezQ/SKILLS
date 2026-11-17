@@ -46,3 +46,4 @@ node --test app/orders.server.test.ts    # pruebas de la lógica de pedidos
 - 2026-11-17 Edge headless no baja de ~500 px de ancho: para ver en celular, meter la página en un iframe de 390 px.
 - 2026-11-17 Detector de contraentrega (app/cod.server.ts): reglas + pregunta "¿Es contraentrega?" + aprende por tienda tras 3 respuestas iguales (tabla ShopSetting). Henry pidió "un modelo"; se eligió reglas+aprendizaje porque no hay datos para entrenar IA.
 - 2026-11-17 Tiendas de desarrollo: Shopify limita orderCreate a pocos pedidos por minuto ("Too many attempts"); esperar ~65 s entre pedidos en pruebas.
+- 2026-11-17 Semáforo de riesgo (app/risk.server.ts + risk-data.server.ts): historial Shopify por customer_id del payload (sin read_customers) + Klipsale por phoneHash + order.risk.recommendation. Umbral valor alto fijo 200.000 COP (pendiente: promedio por tienda).
