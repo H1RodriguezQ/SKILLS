@@ -34,3 +34,7 @@ node --test app/orders.server.test.ts    # pruebas de la lógica de pedidos
 - 2026-11-16 Marca: "Klipsale" con K mayúscula en textos; el logo puede seguir en minúscula (es el logotipo).
 - 2026-11-16 No usar `prisma migrate reset` (borra la sesión de la tienda); para rehacer una tabla propia, borrarla con `prisma db execute`.
 - Resumen completo del negocio: lo mandó Henry el 2026-11-17 (planes, precios, equipo, competencia, marca).
+- 2026-11-17 Manual de marca = Descargas/KLIPSALE.pdf (Henry lo llama "los figmas"; no hay enlace de Figma de Klipsale). Reglas clave: decir "confirmar", "pedido", "plata", "contraentrega"; nunca "COD", "orden", "checkout"; no cifras de ejemplo como resultados; rojo solo riesgo; amarillo nunca texto sobre blanco; Outfit títulos + Source Sans 3 texto.
+- 2026-11-17 "Flete prepago" = solo el envío pagado antes (caso riesgoso). Pedidos pagados en línea se muestran como "Pago en línea", no "prepago", para no confundir.
+- 2026-11-17 Plantilla WhatsApp de verificación: usar el texto del manual (pág. 9) tal cual, con [tienda], [número], [dirección], [nombre].
+- 2026-11-17 Panel dentro de Shopify = Polaris (requisito de Shopify). La marca completa (colores, fuentes) va en el panel propio (Cloudflare Pages, sirve también para WooCommerce), ícono, landing y WhatsApp.
