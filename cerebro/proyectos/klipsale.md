@@ -29,3 +29,8 @@ node --test app/orders.server.test.ts    # pruebas de la lógica de pedidos
 - 2026-11-16 Teléfono para WhatsApp: solo celulares CO (3xxxxxxxxx → 57...). Fijos quedan null.
 - 2026-11-16 Upsert por (shop, shopifyOrderId) porque Shopify reenvía webhooks.
 - 2026-11-16 orders/create exige pedir "datos protegidos de clientes" en el Dev Dashboard (nombre, teléfono, dirección).
+- 2026-11-16 Nombre, teléfono y dirección se guardan cifrados (AES-256-GCM, clave KLIPSALE_DATA_KEY en .env) + phoneHash para buscar por teléfono. Ciudad/departamento en claro. Si se pierde la clave, esos datos no se recuperan.
+- 2026-11-16 Riesgo por verificar antes de desplegar: Cloudflare Workers gratis (~10 ms CPU) puede no alcanzar para Prisma + auth de Shopify.
+- 2026-11-16 Marca: "Klipsale" con K mayúscula en textos; el logo puede seguir en minúscula (es el logotipo).
+- 2026-11-16 No usar `prisma migrate reset` (borra la sesión de la tienda); para rehacer una tabla propia, borrarla con `prisma db execute`.
+- Resumen completo del negocio: lo mandó Henry el 2026-11-17 (planes, precios, equipo, competencia, marca).
