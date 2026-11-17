@@ -21,7 +21,7 @@ Una ficha por proyecto en [proyectos/](proyectos/).
 | CRUD Estudiantes | H1RodriguezQ/crud-estudiantes | [crud-estudiantes.md](proyectos/crud-estudiantes.md) |
 | Portafolio | H1RodriguezQ/portafolio (por crear) | [portafolio.md](proyectos/portafolio.md) |
 | SabiasQue | (local en HENRY-PC) | [sabiasque.md](proyectos/sabiasque.md) |
-| Klipsale (app Shopify) | (local en C:proyectosklipsale) | [klipsale.md](proyectos/klipsale.md) |
+| Klipsale (app Shopify) | (local en C:/proyectos/klipsale) | [klipsale.md](proyectos/klipsale.md) |
 
 ## Aprendizajes
 Lecciones y errores resueltos en [aprendizajes/](aprendizajes/).
