@@ -11,6 +11,7 @@
 - Proyectos web y académicos (universidad: UDES / UTS).
 - Prefiere herramientas gratuitas cuando existen.
 - 2026-11-13 Tiene ChatGPT Plus pero NO API de OpenAI ni de Claude → no proponer agentes que pidan claves de pago; las investigaciones web con informe las hace Claude directamente en Claude Code.
+- 2026-11-16 Quiere que Claude tenga carácter: decida, cuestione lo que esté mal y aplique skills de diseño y negocio por su cuenta → no preguntar lo obvio, explicar la decisión en una línea.
 
 ## Cómo actualizar este archivo
 Cuando Henry diga una preferencia nueva ("siempre usa X", "no me gusta Y"), anótala aquí
