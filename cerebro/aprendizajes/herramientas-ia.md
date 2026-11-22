@@ -66,3 +66,14 @@ Henry quiere aplicarlas en sus sitios, **siempre gratis**.
 - Repo: https://github.com/TechBeme/open-higgsfield (MIT, Next.js, activo). Vista previa: https://openhiggs.techbe.me (solo interfaz, no genera).
 - Qué es: una INTERFAZ propia (tipo Higgsfield) para generar imágenes y videos, pero NO trae IA: hay que conectar claves de API de proveedores (Magnific, Google AI Studio, Vertex AI, Vercel AI Gateway, ToAPIs, Runware), y casi todos cobran por imagen o video.
 - Decisión: NO instalar por ahora → va contra la preferencia de Henry (sin APIs de pago) y ya tiene Higgsfield (créditos) + Lemo Opuscar (videos gratis con código). Solo valdría con la clave gratis de Google AI Studio (Gemini), que da pocas imágenes al día.
+
+## Lote 3 (2026-11-21)
+- **Terraink: pósters de mapas** (Instagram, terraink.app + datascientist.py) — https://www.instagram.com/p/DfSpLznjRdK/
+  Web https://terraink.app: GRATIS, sin cuenta, con datos de OpenStreetMap. Eliges ciudad, tema de color, formato (A4, fondo de celular…), texto y marcadores, y descargas la imagen (el post muestra Medellín y otras ciudades de Colombia).
+  → SÍ sirve: fondos de mapa para los Shorts (nicho Colombia/guerra/crisis), miniaturas y portadas. Poner siempre el crédito "© OpenStreetMap" (lo pide la licencia).
+- **Tablero de pedidos tipo Kanban** (Facebook, Code & Chill) — https://www.facebook.com/share/r/1MF7E5kWwx/
+  No es una herramienta: es un diseño de panel de admin de tienda (columnas Por empacar → Empacado → Enviado → Entregado, arrastrar tarjetas) hecho en React + GSAP (`src/pages/orders.tsx`). El texto no da repo.
+  → Sirve como IDEA para Klipsale (ver pedidos contraentrega por estado). Gratis de recrear con Claude; no hay nada que instalar.
+- **Claude Council** (Facebook, Aldo Paucar) — https://www.facebook.com/share/r/1A2EUUdLLG/
+  Skill: dices "consultá al consejo" y crea 5 asesores de IA que atacan tu pregunta desde ángulos distintos; un "presidente" junta todo en un veredicto y un paso claro. Sirve para que Claude no te dé la razón en todo.
+  La skill se pide comentando CONSEJO (llega por DM) → revisar el archivo antes de instalar. Mientras tanto ya hay parecidas instaladas: `marketing-skills:marketing-council` (solo marketing) y pedirle a Claude "hazme de abogado del diablo".
