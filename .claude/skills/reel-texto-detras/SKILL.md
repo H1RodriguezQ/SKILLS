@@ -67,7 +67,7 @@ Resultado: «CENFER» queda detrás de las gorras. El recorte tardó unos 3 min 
 
 ## Errores comunes
 - **Clip demasiado largo para el recorte IA:** recortar solo el gancho, no todo el reel.
-- **Texto que tapa la cara:** subir `y`. La idea es que lo tape la cabeza, no que el texto tape los ojos.
+- **Texto que no se lee (pedido de Henry):** el script ya no deja que el texto se salga de la pantalla (máximo 88 % del ancho) y lo alarga si dura menos de 0,8 s + 0,3 s por palabra. Si la persona tapa más del 15 % de las letras, busca otra altura, y si no la encuentra pone el texto DELANTE. Para que se vea el efecto "detrás", elige tomas con una sola persona y espacio sobre la cabeza.
 - **Palabra vertical sobre personas:** se esconde detrás de ellas. Moverla con `x` o quitarla.
 - **Whisper `base` confunde nombres propios:** usar `reemplazos` o revisar la transcripción.
 - **Fuente:** se usa Segoe UI Black estirada (`ancho=1.18`) para imitar la "extended" del reel. Para otra marca, cambiar `FUENTE` y `NEON` en el script.

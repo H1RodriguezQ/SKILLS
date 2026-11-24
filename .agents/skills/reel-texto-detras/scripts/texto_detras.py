@@ -62,14 +62,17 @@ def bloque_texto(txt, tam, color, vertical=False):
         d.text(((im.width - d.textlength(l, font=f)) / 2, i * lh), l, font=f, fill=color + (255,))
     im = im.resize((int(im.width * ancho), im.height), Image.LANCZOS)
     im = im.rotate(90, expand=True) if vertical else im
-    k = (0.9 * H / im.height) if vertical else (E["ancho"] * W / im.width)  # fracción del ancho de pantalla según el estilo
+    k = (0.82 * H / im.height) if vertical else (min(E["ancho"], 0.88) * W / im.width)  # nunca más del 88 %: no se corta en los bordes
     return im.resize((int(im.width * k), int(im.height * k)), Image.LANCZOS)
 
 
-def capa_titulos(titulos, t):
-    """capa RGBA con los títulos activos en el instante t (entrada con eco, salida con eco)"""
+def capa_titulos(titulos, t, frente=False):
+    """capa RGBA con los títulos activos en el instante t (entrada con eco, salida con eco).
+    frente=True dibuja solo los que van delante de la persona (si detrás se taparían demasiado)"""
     capa = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     for ti in titulos:
+        if ti.get("_frente", False) != frente:
+            continue
         t0, t1, im = ti["t0"], ti["t1"], ti["_im"]
         if not (t0 <= t < t1 + 0.3):
             continue
@@ -102,6 +105,47 @@ def capa_titulos(titulos, t):
     return capa
 
 
+def alfa_persona(persona, t):
+    """máscara (H, W) 0..1 de la persona en el instante t"""
+    r = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{t:.2f}", "-c:v", "libvpx-vp9", "-i", str(persona), "-frames:v", "1",
+                        "-vf", f"scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H}", "-f", "rawvideo", "-pix_fmt", "rgba", "-"],
+                       capture_output=True)
+    if len(r.stdout) < W * H * 4:
+        return np.zeros((H, W))
+    return np.frombuffer(r.stdout, np.uint8).reshape(H, W, 4)[..., 3] / 255.0
+
+
+def colocar(ti, persona, max_tapado=0.15):
+    """busca la posición donde la persona tapa menos del 15 % de las letras; si no existe, el título va delante.
+    También alarga el título si no dura lo suficiente para leerlo."""
+    n = len(ti["texto"].split())
+    minimo = 0.35 + 0.8 + 0.3 * n  # entrada + lectura
+    if ti["t1"] - ti["t0"] < minimo:
+        print(f"  «{ti['texto']}» dura poco: lo alargo a {minimo:.1f} s")
+        ti["t1"] = ti["t0"] + minimo
+    tapa = np.maximum.reduce([alfa_persona(persona, ti["t0"] + 0.35 + (ti["t1"] - ti["t0"] - 0.35) * f) for f in (0.0, 0.5, 1.0)])
+    letras = np.asarray(ti["_im"])[..., 3] > 40
+    vert = ti.get("vertical", False)
+    eje = "x" if vert else "y"
+    pedido = ti.get(eje, 0.09 if vert else 0.3)
+    opciones = [pedido] + ([0.09, 0.91, 0.5] if vert else [0.14, 0.2, 0.26, 0.32, 0.38, 0.44, 0.5])
+    mejor = None
+    for v in opciones:
+        cx, cy = (W * v, H * ti.get("y", 0.5)) if vert else (W * ti.get("x", 0.5), H * v)
+        x0, y0 = int(cx - letras.shape[1] / 2), int(cy - letras.shape[0] / 2)
+        if x0 < 0 or y0 < 0 or x0 + letras.shape[1] > W or y0 + letras.shape[0] > H:
+            continue  # se saldría de la pantalla
+        tapado = (tapa[y0:y0 + letras.shape[0], x0:x0 + letras.shape[1]][letras] > 0.5).mean()
+        if mejor is None or tapado < mejor[1] - 0.02:
+            mejor = (v, tapado)
+        if tapado <= max_tapado and v == pedido:
+            break
+    v, tapado = mejor or (pedido, 1.0)
+    ti[eje] = v
+    ti["_frente"] = tapado > max_tapado
+    print(f"  «{ti['texto']}»: {eje}={v:.2f}, tapado {tapado:.0%}" + (" -> va DELANTE para que se lea" if ti["_frente"] else ""))
+
+
 def frases(palabras, max_pal=4):
     out, cur = [], []
     for w in palabras:
@@ -130,7 +174,10 @@ def subtitulo(im, grupos, t):
             d = ImageDraw.Draw(im)
             txt = " ".join(w["w"] for w in g)
             if E["sub"] == "grandes":  # estilo TikTok: grandes, amarillos con borde negro, abajo
-                f = ImageFont.truetype(FUENTES + "seguibl.ttf", 68)
+                tam = 68
+                while d.textlength(txt.upper(), font=ImageFont.truetype(FUENTES + "seguibl.ttf", tam)) > 0.88 * W:
+                    tam -= 4  # nunca se sale de la pantalla
+                f = ImageFont.truetype(FUENTES + "seguibl.ttf", tam)
                 d.text((W / 2, H * 0.70), txt.upper(), font=f, fill=(255, 220, 40, 255), stroke_width=8, stroke_fill=(0, 0, 0, 255), anchor="mm")
             else:  # pequeños con sombra suave, como el reel IAC
                 f = ImageFont.truetype(FUENTE_SUB, 40)
@@ -161,6 +208,7 @@ def main():
     for ti in plan["titulos"]:
         ti["_im"] = bloque_texto(ti["texto"], 200,
                                  hexcol(ti.get("color", E["color"])), ti.get("vertical", False))
+        colocar(ti, persona)
     pal = transcribir(video) if plan.get("subtitulos") else []
     for w in pal:
         for mal, bien in plan.get("reemplazos", {}).items():
@@ -182,6 +230,7 @@ def main():
         im = Image.frombytes("RGB", (W, H), fb).convert("RGBA")
         im.alpha_composite(capa_titulos(plan["titulos"], t))          # 1) texto sobre el fondo
         im.alpha_composite(Image.frombytes("RGBA", (W, H), pb))       # 2) la persona encima: el texto queda detrás
+        im.alpha_composite(capa_titulos(plan["titulos"], t, frente=True))  # títulos que detrás no se leerían
         subtitulo(im, grupos, t)                                      # 3) subtítulos y logo por encima de todo
         if logo:
             im.alpha_composite(logo, (W - logo.width - 40, 60))
