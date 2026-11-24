@@ -1,7 +1,7 @@
 # Activa o desactiva mods de Cities: Skylines II por su numero de Paradox Mods (sale entre parentesis en Logs\Modding.log).
 # Uso: powershell -ExecutionPolicy Bypass -File mods.ps1 -Ids 80095,75250            -> desactiva
 #      powershell -ExecutionPolicy Bypass -File mods.ps1 -Ids 80095,75250 -Activar   -> vuelve a activar
-# shortcut: edita la copia local del playset; si el juego sincroniza con la cuenta de Paradox y la revierte, hacerlo desde el menu Playset.
+# shortcut: edita la copia local del playset y la marca como mas nueva que la nube; si aun asi se revierte, hacerlo desde el menu Playset.
 param([Parameter(Mandatory)][string[]]$Ids, [switch]$Activar)
 $ErrorActionPreference = 'Stop'
 $Ids = $Ids -split ',' | ForEach-Object Trim   # con -File, "1,2" llega como un solo texto
@@ -23,6 +23,9 @@ foreach ($id in $Ids) {
     elseif ($bloque.Contains('"sourceId":"' + $id + '"')) { "Ya  $id estaba en isEnabled=$a" }
     else { Write-Warning "$id no esta en el playset activo ($($activo.presentation.name))" }
 }
+# Fecha de cambio = ahora: si no, el juego cree que la nube es mas nueva y revierte (playset_sync.json lastSyncedAt)
+$ahora = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ss.fffZ")
+$bloque = [regex]::Replace($bloque, '"modifiedAt":"[^"]*"', '"modifiedAt":"' + $ahora + '"', 1)
 $txt = $txt.Remove($m.Index, $m.Length).Insert($m.Index, $bloque)
 $null = $txt | ConvertFrom-Json   # comprobacion: sigue siendo JSON valido
 [IO.File]::WriteAllText($file, $txt, (New-Object Text.UTF8Encoding $false))
