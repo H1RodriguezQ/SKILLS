@@ -8,6 +8,8 @@
 #   "video": "host.mp4",            # clip vertical del presentador (ideal 3-10 s; el recorte IA va a ~1.3 cuadros/s)
 #   "persona": "persona.webm",      # opcional; si no existe se crea con hyperframes remove-background
 #   "salida": "gancho.mp4",
+#   "estilo": "neon",               # neon | noticia | campo | elegante (ver ESTILOS)
+#   "ajustes": {"color": "#00E5FF", "ancho": 0.8},   # opcional: cambia cualquier campo del estilo
 #   "titulos": [
 #     {"texto": "¿SABÍAS\nQUE", "t0": 0.8, "t1": 2.6, "y": 0.40},
 #     {"texto": "TECNOLOGÍA\nCREATIVIDAD", "t0": 3.2, "t1": 5.0, "y": 0.22},
@@ -24,11 +26,18 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 W, H, FPS = 1080, 1920, 30
-FUENTE = "C:/Windows/Fonts/seguibl.ttf"   # Segoe UI Black, estirada a lo ancho imita la fuente "extended" del reel
+FUENTES = "C:/Windows/Fonts/"
+# estilos según lo que muestra el video; el plan elige uno con "estilo" y puede cambiar cualquier campo con "ajustes"
+ESTILOS = {
+    "neon":     dict(fuente="seguibl.ttf", estirar=1.18, color="#C8FF00", ancho=0.94, eco=1.0, sub="pequenos"),  # tecnología, clases, instituciones (reel IAC)
+    "noticia":  dict(fuente="impact.ttf", estirar=1.0, color="#FF2D2D", ancho=0.94, eco=1.0, sub="grandes", temblor=True),  # crisis, miedo, datos
+    "campo":    dict(fuente="ariblk.ttf", estirar=1.05, color="#FFE9A8", ancho=0.80, eco=0.5, sub="pequenos"),  # vlogs, animales, naturaleza
+    "elegante": dict(fuente="GILSANUB.TTF", estirar=1.0, color="#FFFFFF", ancho=0.70, eco=0.3, sub="pequenos"),  # cultura, eventos, arte
+}
+E = dict(ESTILOS["neon"])  # estilo activo (se fija en main)
 FUENTE_SUB = "C:/Windows/Fonts/seguisb.ttf"
 WHISPER_PY = Path.home() / "Documents/SabiasQue/06_Automatizacion/alineacion_local/.venv/Scripts/python.exe"
 HF_CLI = Path.home() / ".claude/skills/hyperframes/scripts/plugin-cli.mjs"
-NEON = (200, 255, 0)
 
 
 def hexcol(s):
@@ -39,9 +48,10 @@ def ease_out(u):  # expo: llega rápido y se frena (golpe)
     return 1 - 2 ** (-10 * min(max(u, 0), 1))
 
 
-def bloque_texto(txt, tam, color, vertical=False, ancho=1.18):
+def bloque_texto(txt, tam, color, vertical=False):
     """renderiza el texto una vez (RGBA), estirado a lo ancho; vertical = rotado 90°"""
-    f = ImageFont.truetype(FUENTE, tam)
+    ancho = E["estirar"]
+    f = ImageFont.truetype(FUENTES + E["fuente"], tam)
     lineas = txt.split("\n")
     d0 = ImageDraw.Draw(Image.new("L", (1, 1)))
     lw = max(d0.textlength(l, font=f) for l in lineas)
@@ -52,7 +62,7 @@ def bloque_texto(txt, tam, color, vertical=False, ancho=1.18):
         d.text(((im.width - d.textlength(l, font=f)) / 2, i * lh), l, font=f, fill=color + (255,))
     im = im.resize((int(im.width * ancho), im.height), Image.LANCZOS)
     im = im.rotate(90, expand=True) if vertical else im
-    k = (0.9 * H / im.height) if vertical else (0.94 * W / im.width)  # ocupa toda la pantalla, como en el reel
+    k = (0.9 * H / im.height) if vertical else (E["ancho"] * W / im.width)  # fracción del ancho de pantalla según el estilo
     return im.resize((int(im.width * k), int(im.height * k)), Image.LANCZOS)
 
 
@@ -77,7 +87,12 @@ def capa_titulos(titulos, t):
             return (cx, cy + off) if vert else (cx + off, cy)
 
         for k, alfa in ((4, 0.12), (3, 0.2), (2, 0.32), (1, 0.5), (0, 1.0)):  # eco: copias en instantes anteriores
+            alfa = 1.0 if k == 0 else alfa * E["eco"]
+            if alfa <= 0.01:
+                continue
             x, y = pos(t - k * 0.03)
+            if E.get("temblor") and k == 0 and t < t1:  # sacudón al llegar
+                x += 14 * math.sin(t * 80) * max(0, 1 - (t - t0 - 0.3) / 0.3) if t > t0 + 0.3 else 0
             ghost = im if k == 0 else im.copy()
             if k:
                 a = np.asarray(ghost).copy()
@@ -113,10 +128,14 @@ def subtitulo(im, grupos, t):
     for g in grupos:
         if g[0]["s"] - 0.05 <= t < g[-1]["e"] + 0.1:
             d = ImageDraw.Draw(im)
-            f = ImageFont.truetype(FUENTE_SUB, 40)
             txt = " ".join(w["w"] for w in g)
-            d.text((W / 2 + 3, H * 0.63 + 3), txt, font=f, fill=(0, 0, 0, 170), anchor="mm")  # sombra suave
-            d.text((W / 2, H * 0.63), txt, font=f, fill=(255, 255, 255, 255), anchor="mm")
+            if E["sub"] == "grandes":  # estilo TikTok: grandes, amarillos con borde negro, abajo
+                f = ImageFont.truetype(FUENTES + "seguibl.ttf", 68)
+                d.text((W / 2, H * 0.70), txt.upper(), font=f, fill=(255, 220, 40, 255), stroke_width=8, stroke_fill=(0, 0, 0, 255), anchor="mm")
+            else:  # pequeños con sombra suave, como el reel IAC
+                f = ImageFont.truetype(FUENTE_SUB, 40)
+                d.text((W / 2 + 3, H * 0.63 + 3), txt, font=f, fill=(0, 0, 0, 170), anchor="mm")
+                d.text((W / 2, H * 0.63), txt, font=f, fill=(255, 255, 255, 255), anchor="mm")
             return
 
 
@@ -138,9 +157,10 @@ def main():
     salida = base / plan.get("salida", "gancho.mp4")
     if not persona.exists():  # recorte IA local (CPU): ~1.3 cuadros por segundo
         subprocess.run(["node", str(HF_CLI), "remove-background", str(video), "-o", str(persona)], check=True)
+    E.clear(); E.update(ESTILOS[plan.get("estilo", "neon")]); E.update(plan.get("ajustes", {}))
     for ti in plan["titulos"]:
         ti["_im"] = bloque_texto(ti["texto"], 200,
-                                 hexcol(ti["color"]) if "color" in ti else NEON, ti.get("vertical", False))
+                                 hexcol(ti.get("color", E["color"])), ti.get("vertical", False))
     pal = transcribir(video) if plan.get("subtitulos") else []
     for w in pal:
         for mal, bien in plan.get("reemplazos", {}).items():

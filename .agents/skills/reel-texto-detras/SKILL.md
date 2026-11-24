@@ -15,12 +15,28 @@ Referencia: reel de imctbga (IAC Bucaramanga, nov 2026), de 52 s. Así está arm
 | 50–52 s | Tarjeta blanca con el logo animado. |
 | Todo el video | Subtítulos **pequeños** blancos con sombra, a media altura (no los grandes de TikTok). Logo de la institución arriba a la derecha. |
 
+## El estilo depende del video (pedido de Henry, 24 nov 2026)
+
+Antes de escribir el plan, mira qué muestra el video y qué se quiere transmitir. Con eso eliges `"estilo"`, y con `"ajustes"` cambias lo que haga falta: color de la marca, `ancho`, `fuente`, `eco` (de 0 a 1) o `sub` (`pequenos` o `grandes`).
+
+| Estilo | Para qué videos | Cómo se ve |
+|---|---|---|
+| `neon` | Tecnología, clases, instituciones, lanzamientos | Verde neón #C8FF00, letra negra ancha que ocupa toda la pantalla, eco fuerte y subtítulos pequeños (como el reel IAC) |
+| `noticia` | Crisis, miedo, datos, el canal Sabías Que | Impact roja, sacudón al llegar y subtítulos grandes amarillos estilo TikTok |
+| `campo` | Vlogs, animales, prácticas, naturaleza (Cenfer) | Arial Black crema, 80 % del ancho, eco suave y subtítulos pequeños |
+| `elegante` | Cultura, eventos, arte, graduaciones | Gill Sans Ultra blanca, 70 % del ancho, casi sin eco |
+
+- Si hay una marca (una universidad, una empresa), cambia el `color` por el de su logo.
+- Si el fondo es claro, usa colores fuertes u oscuros. Si es oscuro, neón o blanco.
+- La palabra **vertical** va solo cuando el borde de la pantalla está libre de personas.
+- Si no estás seguro, saca una hoja con 2 o 3 estilos (paso 6) y deja que Henry elija.
+
 ## Pasos
 
 1. **Elegir el gancho:** de 3 a 8 s del presentador hablando, en vertical y con aire arriba de la cabeza. Mientras más corto, mejor: el recorte con IA corre en CPU a unos 1,3 cuadros por segundo, o sea unos 3 min por cada 5 s de video.
 2. **Recortarlo** a 1080×1920:
    `ffmpeg -ss <inicio> -t <dur> -i original.mp4 -vf "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920" -r 30 -c:v libx264 -crf 18 -c:a aac host.mp4`
-3. **Escribir `plan.json`** junto al clip. El formato está en la cabecera de `scripts/texto_detras.py`.
+3. **Escribir `plan.json`** junto al clip, con el `estilo` que le corresponda al video (ver la tabla de arriba). El formato está en la cabecera de `scripts/texto_detras.py`.
    - Títulos de 1 a 2 palabras por línea, en mayúsculas. Cada uno dura de 1,5 a 2 s y debe coincidir con el momento en que el presentador **dice** esa palabra (verlo en la transcripción).
    - `y` entre 0.2 y 0.4, para que el texto quede a la altura de la cabeza y ella lo tape.
    - Palabra vertical: solo si el borde (`x` 0.09 o 0.91) queda libre de personas. Si no, la tapan y se lee a medias.
