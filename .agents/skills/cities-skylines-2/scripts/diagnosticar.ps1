@@ -13,6 +13,9 @@ $mods = (Select-String "$dir\Logs\Modding.log" -Pattern '^\s+- .* v[\d\.]+ \(\d+
 # Mods que piden otra version del juego = el juego esta desactualizado (causa de muchos errores en cadena)
 $l | Select-String 'Supported version is ([\d\.]+f\d)' | Select-Object -First 1 | ForEach-Object {
     "!! Hay mods hechos para la version $($_.Matches.Groups[1].Value). Actualiza el juego primero." }
+# El mapa/partida se guardo en una version mas nueva: carga plano y revienta en PostDeserialize
+$l | Select-String 'Unknown format tag: (\w+)' | Select-Object -First 1 | ForEach-Object {
+    "!! El mapa o partida se hizo en una version mas nueva del juego ($($_.Matches.Groups[1].Value)). Sale plano: usa otro mapa." }
 
 $res = for ($i = 0; $i -lt $l.Count; $i++) {
     if ($l[$i] -notmatch '\[(CRITICAL|ERROR)\]') { continue }
