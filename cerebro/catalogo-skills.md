@@ -7,6 +7,7 @@ Qué skill usar para cada tipo de tarea. Si no está aquí, usa `find-skills`.
 |---|---|
 | `cerebro` | Leer y guardar memoria (preferencias, decisiones, aprendizajes) |
 | `crear-skill` | Convertir una tarea repetida en una skill nueva |
+| `cities-skylines-2` | Que Cities Skylines 2 corra rápido y diagnosticar errores de mods (scripts optimizar/diagnosticar) |
 | `aplicar-skills` | Instalar en un proyecto solo las skills que le sirven |
 | `find-skills` | Buscar e instalar skills del ecosistema (skills.sh) |
 | `hoja-de-vida` | Crear, mejorar y adaptar el CV (RenderCV), buscar ofertas y preparar postulaciones |
