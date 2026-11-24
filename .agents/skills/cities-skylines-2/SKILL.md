@@ -48,11 +48,17 @@ Carpeta del juego (datos): `%USERPROFILE%\AppData\LocalLow\Colossal Order\Cities
 2. Los `[CRITICAL]` son los que rompen la partida. En la traza busca el nombre del mod (p. ej. `Better_Bulldozer.Systems...`) — ese es el culpable.
 3. Qué mapa o partida cargó: `Select-String "$env:USERPROFILE\AppData\LocalLow\Colossal Order\Cities Skylines II\Logs\SceneFlow.log" -Pattern 'Starting game from'`
 4. `[ERROR] Error when initializing prefab: <nombre>` = un edificio/asset roto: solo no aparece, no es grave.
-5. Explícale en palabras simples: qué mod falla, por qué, y que lo desactive en Paradox Mods → cierre el juego → vuelva a abrir y pruebe.
+5. Explícale en palabras simples qué mod falla y por qué.
+6. Para desactivarlo tú (juego cerrado): busca su número entre paréntesis en `Logs\Modding.log` y corre
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\Desktop\Claude\.claude\skills\cities-skylines-2\scripts\mods.ps1" -Ids 80095,94394
+   ```
+   (`-Activar` para revertir; deja copia `playset_config.json.bak-*`). Si dice "no está en el playset activo", ese mod entra como dependencia de otro: hay que quitar el mod que lo pide o hacerlo desde el menú Playset.
+   Luego que abra el juego y corre `diagnosticar.ps1` para confirmar.
 
 ## Errores conocidos en este PC (nov 2026)
 - **Causa raíz:** el juego instalado es la **1.6.0f1** (copia en `Documents\2026A\...`, no se actualiza sola) y los mods de Paradox Mods ya piden la **1.6.2f1**. Por eso fallan en cadena. Solución de fondo: tener el juego en la versión actual (la copia oficial de Steam se actualiza sola). No ayudes a conseguir copias no oficiales.
-- **Mapa plano, sin relieve ni agua:** `Traffic v0.2.13` no carga en la 1.6.0 (`Error loading assembly Traffic`) → `Better Bulldozer` revienta (`Unknown Type: Traffic.Components.ModifiedConnections`) y corta la carga del mapa. Mientras el juego siga en 1.6.0: desactivar **Traffic** y **Better Bulldozer**.
+- **Mapa plano, sin relieve ni agua:** `Traffic v0.2.13` no carga en la 1.6.0 (`Error loading assembly Traffic`) → `Better Bulldozer` revienta (`Unknown Type: Traffic.Components.ModifiedConnections`) y corta la carga del mapa. Mientras el juego siga en 1.6.0: desactivar **Traffic (80095)**. Hecho el 24 nov 2026 junto con **Lumina (94394)**. **Better Bulldozer (75250)** no está en el playset (entra como dependencia), así que sigue cargando; sin Traffic no debería fallar.
 - `Lumina` dice "Unsupported game version": desactivarlo hasta tener la 1.6.2.
 - `Shibuya 109` (`ArgumentNullException ... key` en `IsUnlockable`): asset roto, solo no aparece. Quitarlo de suscripciones si molesta.
 - `SimpleModCheckerPlus` (`ArgumentNullException ... path` en `ModCheckup.cs`): el verificador de mods no encuentra la ruta de un mod. Inofensivo; se puede desactivar.
