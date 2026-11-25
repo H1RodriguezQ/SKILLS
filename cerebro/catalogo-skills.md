@@ -11,6 +11,7 @@ Qué skill usar para cada tipo de tarea. Si no está aquí, usa `find-skills`.
 | `aplicar-skills` | Instalar en un proyecto solo las skills que le sirven |
 | `find-skills` | Buscar e instalar skills del ecosistema (skills.sh) |
 | `hoja-de-vida` | Crear, mejorar y adaptar el CV (RenderCV), buscar ofertas y preparar postulaciones |
+| `youtube-agent` | Estrategia del canal de YouTube: ideas con evidencia (vidIQ), guiones, SEO y aprendizaje de lo publicado. Adaptada de nova-youtube-agent (MIT) |
 | `reel-texto-detras` | Reels verticales con palabras neón gigantes detrás de la persona (recorte IA local), subtítulos pequeños, b-roll y cierre con logo (script texto_detras.py) |
 
 ## Skills recomendadas por tipo de proyecto

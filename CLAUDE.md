@@ -32,7 +32,8 @@ skills/
 │   ├── cerebro/               ← leer y escribir en la memoria
 │   ├── crear-skill/           ← crear skills nuevas
 │   ├── aplicar-skills/        ← instalar skills en otros proyectos
-│   └── hoja-de-vida/          ← CV y postulaciones
+│   ├── hoja-de-vida/          ← CV y postulaciones
+│   └── youtube-agent/         ← estrategia del canal de YouTube
 ├── .agents/skills/            ← mismas skills, formato universal (Cursor, Codex…)
 ├── privado/                   ← datos personales (CV, postulaciones); NO se sube
 ├── plantillas/                ← plantillas para fichas y skills

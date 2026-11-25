@@ -77,3 +77,7 @@ Henry quiere aplicarlas en sus sitios, **siempre gratis**.
 - **Claude Council** (Facebook, Aldo Paucar) — https://www.facebook.com/share/r/1A2EUUdLLG/
   Skill: dices "consultá al consejo" y crea 5 asesores de IA que atacan tu pregunta desde ángulos distintos; un "presidente" junta todo en un veredicto y un paso claro. Sirve para que Claude no te dé la razón en todo.
   La skill se pide comentando CONSEJO (llega por DM) → revisar el archivo antes de instalar. Mientras tanto ya hay parecidas instaladas: `marketing-skills:marketing-council` (solo marketing) y pedirle a Claude "hazme de abogado del diablo".
+
+## Skills de YouTube (2026-11-25)
+- Instalada: `youtube-agent`, adaptada de sharbelxyz/nova-youtube-agent (MIT, 53 instalaciones). Revisada: solo Markdown, sin scripts ni claves. Se quitaron 14 referencias del canal del autor; guarda su memoria en `cerebro/proyectos/sabiasque-youtube/` (no en su carpeta, que el script de sincronización sobrescribe).
+- Otras vistas con `npx skills find youtube` (no instaladas): higgsfield-youtube-thumbnail (147K, miniaturas, gasta créditos), baoyu-youtube-transcript (23K, transcripciones), youtube-clipper (5K, recortar videos con yt-dlp, en chino), youtube-seo (4K).
